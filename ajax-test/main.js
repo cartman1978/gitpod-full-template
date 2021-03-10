@@ -17,7 +17,13 @@ xhr.onreadystatechange = function() {
 }
 
 function writeToDocument(type) {
+    let el = document.getElementById("data");
+    el.innerHTML = "";
+
     getData(type, function(data) {
-          document.getElementById("data").innerHTML = data;
+          data = data.results;
+          data.forEach(function(item) {
+             el.innerHTML += "<p>" + item.name + "</p>";
+          });
     });
 }
